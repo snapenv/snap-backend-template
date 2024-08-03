@@ -12,15 +12,12 @@ from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, Settings
 
 # Constants
 MISSING_ENV = ">>> undefined ENV parameter <<<"
-""" Error message for missing environment variables. """
 MISSING_SECRET = ">>> missing SECRETS file <<<"
-""" Error message for missing secrets file. """
 SECRETS_DIR = "/run/secrets" if os.path.exists("/.dockerenv") else f"{site.USER_BASE}/secrets"
-""" This is where your secrets are stored (in Docker or locally). """
 PLATFORM = {"linux": "Linux", "linux2": "Linux", "win32": "Windows", "darwin": "MacOS"}
-""" Known platforms in my end of the world. """
-ENVIRONMENT = os.getenv("ENVIRONMENT", MISSING_ENV)
-""" Define environment. """
+# ENVIRONMENT = os.getenv("ENVIRONMENT", MISSING_ENV)
+ENVIRONMENT = os.getenv("ENVIRONMENT", "")
+
 
 # --------------------------------------------------------------
 # This needs to be done before the Base class gets evaluated, and
@@ -43,9 +40,9 @@ class SnapEnvCommonSettings(BaseSettings):
 
     The source priority is changed (from default) to the following
     order (from highest to lowest):
-      - init_settings
-      - dotenv_settings
       - env_settings
+      - dotenv_settings
+      - init_settings
       - file_secret_settings
 
     The following environment variables should already be defined:
@@ -65,7 +62,10 @@ class SnapEnvCommonSettings(BaseSettings):
     """
 
     model_config = SettingsConfigDict(
-        extra="ignore", secrets_dir=SECRETS_DIR, env_file_encoding="utf-8", env_file=".env"
+        extra="ignore",
+        secrets_dir=SECRETS_DIR,
+        env_file_encoding="utf-8",
+        env_file=".env",
     )
 
     # constant parameters.
@@ -74,7 +74,7 @@ class SnapEnvCommonSettings(BaseSettings):
     env: str = ENVIRONMENT
     platform: str = PLATFORM.get(sys.platform, "other")
 
-    @computed_field
+    @computed_field  # type: ignore[misc]
     @property
     def server(self) -> str:
         """Return local server name stripped of possible domain part.
@@ -93,4 +93,4 @@ class SnapEnvCommonSettings(BaseSettings):
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
         """Change source priority order (env trumps environment)."""
-        return (init_settings, dotenv_settings, env_settings, file_secret_settings)
+        return (env_settings, dotenv_settings, init_settings, file_secret_settings)
