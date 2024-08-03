@@ -49,16 +49,16 @@ nav_pages_path = "MODULES-Reference"
 # -----------------------------------------------------#
 #                       Runner                         #
 # -----------------------------------------------------#
-""" Generate code reference pages and navigation
+# """ Generate code reference pages and navigation
 
-    Based on the recipe of mkdocstrings:
-    https://github.com/mkdocstrings/mkdocstrings
-    https://github.com/mkdocstrings/mkdocstrings/issues/389#issuecomment-1100735216
+#     Based on the recipe of mkdocstrings:
+#     https://github.com/mkdocstrings/mkdocstrings
+#     https://github.com/mkdocstrings/mkdocstrings/issues/389#issuecomment-1100735216
 
-    Credits:
-    Timothée Mazzucotelli
-    https://github.com/pawamoy
-"""
+#     Credits:
+#     Timothée Mazzucotelli
+#     https://github.com/pawamoy
+# """
 # Iterate over each Python file
 for path in sorted(Path(src_dir).rglob("*.py")):
     # Get path in module, documentation and absolute
