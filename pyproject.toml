@@ -141,7 +141,7 @@ convention = "numpy"
     name = "dev"
     options = ["--dev"]
 
-  [tool.poe.tasks.docs]
+  [tool.poe.tasks.docs_sphinx]
   help = "Generate this app's docs"
   cmd = """
     pdoc
@@ -161,6 +161,18 @@ convention = "numpy"
     name = "outputdirectory"
     options = ["--output-directory"]
     default = "docs"
+
+  [tool.poe.tasks.docs]
+  help = "Star local mkdocs docs server"
+  cmd = """
+    mkdocs serve
+    """
+
+  [tool.poe.tasks.gen_docs]
+  help = "Generate this app's docs"
+  cmd = """
+    python3 scripts/gen_pages.py
+    """
 
   [tool.poe.tasks.lint]
   help = "Lint this app"
