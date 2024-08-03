@@ -1,0 +1,1 @@
+::: src.snap_faststream_template.api
