@@ -106,7 +106,7 @@ convention = "numpy"
         --host $host \
         --port $port \
         --reload \
-        snap_faststream_template.api:app
+        snap_app.api:app
     } else {
       gunicorn \
         --access-logfile - \
@@ -118,7 +118,7 @@ convention = "numpy"
         --worker-class uvicorn.workers.UvicornWorker \
         --worker-tmp-dir /dev/shm \
         --workers 2 \
-        snap_faststream_template.api:app
+        snap_app.api:app
     } fi
     """
 

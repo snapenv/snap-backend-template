@@ -1,8 +1,8 @@
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-faststream-template) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://codespaces.new/snapenv/snap-faststream-template)
 
-# Snap FastStream Template
+# Snap App Template
 
-Snap template for FastStream workers server.
+Snap template for FastAPI server, FastStream workers server, etc.
 
 ## Using
 
