@@ -9,7 +9,7 @@ Snap template for FastStream workers server.
 To serve this app, run:
 
 ```sh
-docker compose up app
+docker compose up -d app
 ```
 
 and open [localhost:8000](http://localhost:8000) in your browser.
