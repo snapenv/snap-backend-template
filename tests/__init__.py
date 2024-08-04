@@ -1,1 +1,1 @@
-"""Snap FastStream Template test suite."""
+"""Snap App test suite."""

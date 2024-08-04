@@ -1,9 +1,9 @@
-"""Test Snap FastStream Template REST API."""
+"""Test Snap App REST API."""
 
 import httpx
 from fastapi.testclient import TestClient
 
-from snap_faststream_template.api import app
+from snap_app.api import app
 
 client = TestClient(app)
 
