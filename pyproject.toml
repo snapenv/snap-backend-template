@@ -38,7 +38,6 @@ ruff = ">=0.3.5"
 cruft = ">=2.15.0"
 ipykernel = ">=6.29.4"
 ipywidgets = ">=8.1.2"
-pdoc = ">=14.4.0"
 mkdocs = "^1.6.0"
 mkdocs-material = "^9.5.31"
 mkdocs-awesome-pages-plugin = "^2.9.3"
@@ -141,35 +140,14 @@ convention = "numpy"
     name = "dev"
     options = ["--dev"]
 
-  [tool.poe.tasks.docs_sphinx]
-  help = "Generate this app's docs"
-  cmd = """
-    pdoc
-      --docformat $docformat
-      --output-directory $outputdirectory
-      snap_faststream_template
-    """
-
-    [[tool.poe.tasks.docs.args]]
-    help = "The docstring style (default: numpy)"
-    name = "docformat"
-    options = ["--docformat"]
-    default = "numpy"
-
-    [[tool.poe.tasks.docs.args]]
-    help = "The output directory (default: docs)"
-    name = "outputdirectory"
-    options = ["--output-directory"]
-    default = "docs"
-
   [tool.poe.tasks.docs]
   help = "Star local mkdocs docs server"
   cmd = """
     mkdocs serve
     """
 
-  [tool.poe.tasks.gen_docs]
-  help = "Generate this app's docs"
+  [tool.poe.tasks.gen_module_docs]
+  help = "Generate this app's modules docs"
   cmd = """
     python3 scripts/gen_pages.py
     """

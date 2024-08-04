@@ -1821,25 +1821,6 @@ files = [
 ]
 
 [[package]]
-name = "pdoc"
-version = "14.6.0"
-description = "API Documentation for Python Projects"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pdoc-14.6.0-py3-none-any.whl", hash = "sha256:36c42c546a317d8e3e8c0b39645f24161374de0c7066ccaae76628d721e49ba5"},
-    {file = "pdoc-14.6.0.tar.gz", hash = "sha256:6e98a24c5e0ca5d188397969cf82581836eaef13f172fc3820047bfe15c61c9a"},
-]
-
-[package.dependencies]
-Jinja2 = ">=2.11.0"
-MarkupSafe = "*"
-pygments = ">=2.12.0"
-
-[package.extras]
-dev = ["hypothesis", "mypy", "pdoc-pyo3-sample-library (==1.0.11)", "pygments (>=2.14.0)", "pytest", "pytest-cov", "pytest-timeout", "ruff", "tox", "types-pygments"]
-
-[[package]]
 name = "pexpect"
 version = "4.9.0"
 description = "Pexpect allows easy control of interactive console applications."
@@ -3400,4 +3381,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "1e70f95013d6ecfff2f6869d08493ea281b7fb05668a252348702007019fe54b"
+content-hash = "5367de9b260d77561b3227a1efe6a7481f69cbc34749939037cdf9a51b60c9df"
