@@ -16,7 +16,7 @@ MISSING_SECRET = ">>> missing SECRETS file <<<"
 SECRETS_DIR = "/run/secrets" if os.path.exists("/.dockerenv") else f"{site.USER_BASE}/secrets"
 PLATFORM = {"linux": "Linux", "linux2": "Linux", "win32": "Windows", "darwin": "MacOS"}
 # ENVIRONMENT = os.getenv("ENVIRONMENT", MISSING_ENV)
-ENVIRONMENT = os.getenv("ENVIRONMENT", "dev")
+ENVIRONMENT = os.getenv("ENVIRONMENT", "")
 
 
 # --------------------------------------------------------------
