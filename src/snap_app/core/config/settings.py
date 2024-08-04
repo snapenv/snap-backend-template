@@ -22,6 +22,7 @@ class AppSettings(SnapEnvCommonSettings):
     """
 
     # Debug
+    APP_TITLE: str
     LOG_LEVEL: str
 
     model_config = SettingsConfigDict(env_file=f"{SnapEnvCommonSettings().env}.env")

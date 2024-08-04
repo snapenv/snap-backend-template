@@ -1,1 +1,1 @@
-"""Snap FastStream Template."""
+"""Snap App Template."""

@@ -1,4 +1,4 @@
-"""Snap FastStream Template REST API."""
+"""Snap App Template REST API."""
 
 import asyncio
 import logging
@@ -8,9 +8,7 @@ from contextlib import asynccontextmanager
 import coloredlogs
 from fastapi import FastAPI
 
-from snap_faststream_template.core.config.settings import settings
-
-print(settings)
+from snap_app.core.config.settings import settings
 
 
 @asynccontextmanager
@@ -26,7 +24,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # Shutdown events.
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan, title=settings.APP_TITLE)
 
 
 @app.get("/compute")
