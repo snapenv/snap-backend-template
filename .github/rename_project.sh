@@ -17,7 +17,7 @@ echo "Description: $description";
 echo "Renaming project..."
 
 original_author="snapenv"
-original_name="snap-backend-template"
+original_name="snap_backend_template"
 original_urlname="snap-backend-template"
 original_description="SnapEnv template for backend server."
 # Iterate over all files in the repository
