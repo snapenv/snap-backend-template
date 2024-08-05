@@ -1,4 +1,4 @@
-"""SnapEnv settings."""
+"""SnapEnv Base Settings."""
 
 # BUILTIN modules
 import os
@@ -33,32 +33,59 @@ if not os.path.exists("/.dockerenv"):
 # ------------------------------------------------------------------------
 #
 class SnapEnvCommonSettings(BaseSettings):
-    r"""SnapEnv common configuration parameters shared between all environments.
+    r"""
+    SnapEnv common configuration parameters shared between all environments.
 
-    Read configuration parameters defined in this class, and from
-    ENVIRONMENT variables and from the .env file.
+    This class reads configuration parameters defined within the class,
+    from environment variables, and from the .env file. The source priority 
+    is as follows (from highest to lowest):
 
-    The source priority is changed (from default) to the following
-    order (from highest to lowest):
-      - env_settings
-      - dotenv_settings
-      - init_settings
-      - file_secret_settings
+    - env_settings
+    - dotenv_settings
+    - init_settings
+    - file_secret_settings
 
-    The following environment variables should already be defined:
-      - HOSTNAME (on Linux servers only - set by OS)
-      - COMPUTERNAME (on Windows servers only - set by OS)
-      - ENVIRONMENT (on all servers)
+    Environment Variables
+    ---------------------
+    The following environment variables should be defined:
 
-    Path where your <environment>.env file should be placed:
-      - linux: /home/<user>/.local
-      - darwin: /home/<user>/.local
-      - win32: C:\\Users\\<user>\\AppData\\Roaming\\Python'
+    - HOSTNAME (on Linux servers only, set by OS)
+    - COMPUTERNAME (on Windows servers only, set by OS)
+    - ENVIRONMENT (on all servers)
 
-    Path where your secret files should be placed:
-      - linux: /home/<user>/.local/secrets
-      - darwin: /home/<user>/.local/secrets
-      - win32: C:\\Users\\<user>\\AppData\\Roaming\\Python\\secrets'
+    File Paths
+    ----------
+    Paths where the <environment>.env file should be placed:
+
+    - Linux: /home/<user\>/.local
+    - macOS: /home/<user\>/.local
+    - Windows: C:\\Users\\<user\>\\AppData\\Roaming\\Python
+    - Python/Poetry/Docker: Root dir of the project
+
+    Paths where secret files should be placed:
+
+    - Linux: /home/<user\>/.local/secrets
+    - macOS: /home/<user\>/.local/secrets
+    - Windows: C:\\Users\\<user\>\\AppData\\Roaming\\Python\\secrets
+    - Docker: /run/secrets
+
+    Attributes
+    ----------
+    env : str
+        The current environment.
+    platform : str
+        The platform on which the code is running.
+    server : str
+        Local server name stripped of possible domain part.
+    model_config : SettingsConfigDict
+        Configuration dictionary for settings including secrets and .env file handling.
+
+    Methods
+    -------
+    server():
+        Returns the local server name in upper case.
+    settings_customise_sources(settings_cls, init_settings, env_settings, dotenv_settings, file_secret_settings):
+        Customizes the source priority order.
     """
 
     model_config = SettingsConfigDict(
@@ -77,9 +104,13 @@ class SnapEnvCommonSettings(BaseSettings):
     @computed_field  # type: ignore[misc]
     @property
     def server(self) -> str:
-        """Return local server name stripped of possible domain part.
+        """
+        Return local server name stripped of possible domain part.
 
-        :return: Server name in upper case.
+        Returns
+        -------
+        str
+            Server name in upper case.
         """
         return platform.node()
 
@@ -92,5 +123,25 @@ class SnapEnvCommonSettings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        """Change source priority order (env trumps environment)."""
+        """
+        Change source priority order (env trumps environment).
+
+        Parameters
+        ----------
+        settings_cls : type[BaseSettings]
+            The settings class.
+        init_settings : PydanticBaseSettingsSource
+            Initial settings source.
+        env_settings : PydanticBaseSettingsSource
+            Environment variable settings source.
+        dotenv_settings : PydanticBaseSettingsSource
+            Dotenv file settings source.
+        file_secret_settings : PydanticBaseSettingsSource
+            Secret file settings source.
+
+        Returns
+        -------
+        tuple[PydanticBaseSettingsSource, ...]
+            Tuple of settings sources in the new priority order.
+        """
         return (env_settings, dotenv_settings, init_settings, file_secret_settings)

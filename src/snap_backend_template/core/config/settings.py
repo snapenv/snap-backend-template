@@ -13,15 +13,19 @@ from snap_core.config.manager import (
 
 
 class AppSettings(SnapEnvCommonSettings):
-    """AppSettings app configuration parameters..
+    """
+    Application settings configuration.
 
-    Values from {ENVIRONMENT}.env supersede previous values when the file exists.
-
-    Args
-        SnapEnvCommonSettings (_type_): Configuração do APP.
+    Attributes
+    ----------
+    APP_TITLE : str
+        The title of the application.
+    LOG_LEVEL : str
+        The log level for the application.
+    model_config : SettingsConfigDict
+        Configuration dictionary for environment settings, initialized with the environment file.
     """
 
-    # Debug
     APP_TITLE: str
     LOG_LEVEL: str
 
@@ -30,11 +34,16 @@ class AppSettings(SnapEnvCommonSettings):
 
 @lru_cache
 def get_settings() -> AppSettings:
-    """get_settings _summary_.
+    """
+    Retrieve the application settings with caching.
+
+    This function uses an LRU cache to store the settings so that
+    subsequent calls are fast and do not re-initialize the settings.
 
     Returns
     -------
-        AppSettings: _description_
+    AppSettings
+        The application settings instance.
     """
     return AppSettings()
 
