@@ -43,7 +43,6 @@ theme:
   features:
     - navigation.expand
     - navigation.top
-
     - navigation.footer
     - navigation.indexes
     - navigation.sections
@@ -53,7 +52,6 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
-
     - announce.dismiss
     - content.action.edit
     - content.action.view
