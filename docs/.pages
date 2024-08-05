@@ -1,4 +1,5 @@
 nav:
-  - Home: index.md
+  - Start:
+    - Home: index.md
   - ...
   - ADR: adr

@@ -6,9 +6,11 @@ site_author: 'Abner G Jacobsen'
 docs_dir: docs/
 repo_name: 'snapenv/snap-backend-template'
 repo_url: 'https://github.com/snapenv/snap-backend-template'
+copyright: Copyright &copy; 2023 - 2024 Abner G Jacobsen
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - mike
   - awesome-pages
   - macros:
@@ -23,6 +25,11 @@ plugins:
           options:
             docstring_style: numpy
             docstring_section_style: spacy
+  - minify:
+      minify_html: true
+  - glightbox:
+      auto_caption: true
+      caption_position: bottom
 
 # Do not use the nav section in this file but reference to the .pages files
 # in the docs/ directory and subdirectories (awesome-pages plugin)
@@ -36,7 +43,23 @@ theme:
   features:
     - navigation.expand
     - navigation.top
+
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
     - content.code.copy
+    - content.tooltips
 
   palette:
     # Palette toggle for automatic mode
@@ -61,17 +84,78 @@ theme:
         icon: material/brightness-7
         name: Switch to auto mode
 
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  extra_css:
+  - assets/mkdocsoad.css
+
 extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/abnerjacobsen/
+    - icon: fontawesome/brands/github
+      link: https://github.com/abnerjacobsen
   version:
     provider: mike
-    default: stable
+    default: dev
 
 markdown_extensions:
   - pymdownx.details
   - pymdownx.blocks.admonition
   - pymdownx.blocks.details
-  - pymdownx.snippets
-  - pymdownx.superfences
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  # - pymdownx.superfences
+  # - pymdownx.tabbed:
+  #     alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
