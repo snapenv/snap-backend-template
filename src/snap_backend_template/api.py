@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 import coloredlogs
 from fastapi import FastAPI
 
-from snap_app.core.config.settings import settings
+from snap_backend_template.core.config.settings import settings
 
 
 @asynccontextmanager
