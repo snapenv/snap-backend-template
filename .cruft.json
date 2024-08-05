@@ -7,7 +7,7 @@
       "project_type": "app",
       "project_name": "Snap FastStream Template",
       "project_description": "Snap template for FastStream workers server.",
-      "project_url": "https://github.com/snapenv/snap-faststream-template",
+      "project_url": "https://github.com/snapenv/snap-backend-template",
       "author_name": "Abner G Jacobsen",
       "author_email": "abner@apoana.com.br",
       "python_version": "3.11",
@@ -20,8 +20,8 @@
       "private_package_repository_url": "",
       "__docker_image": "python:$PYTHON_VERSION-slim",
       "__docstring_style": "NumPy",
-      "__project_name_kebab_case": "snap-faststream-template",
-      "__project_name_snake_case": "snap_faststream_template",
+      "__project_name_kebab_case": "snap-backend-template",
+      "__project_name_snake_case": "snap_backend_template",
       "_template": "https://github.com/radix-ai/poetry-cookiecutter"
     }
   },

@@ -3,12 +3,12 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
-name = "snap-faststream-template"
+name = "snap-backend-template"
 version = "0.0.0"
 description = "SnapEnv template for backend server."
 authors = ["Abner G Jacobsen <abner@apoana.com.br>"]
 readme = "README.md"
-repository = "https://github.com/snapenv/snap-faststream-template"
+repository = "https://github.com/snapenv/snap-backend-template"
 
 [tool.commitizen]  # https://commitizen-tools.github.io/commitizen/config/
 bump_message = "bump(release): v$current_version → v$new_version"

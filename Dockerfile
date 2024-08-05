@@ -47,7 +47,7 @@ USER user
 # Install the run time Python dependencies in the virtual environment.
 COPY --chown=user:user poetry.lock* pyproject.toml /workspaces/snap-backend-template/
 RUN mkdir -p /home/user/.cache/pypoetry/ && mkdir -p /home/user/.config/pypoetry/ && \
-    mkdir -p src/snap_faststream_template/ && touch src/snap_faststream_template/__init__.py && touch README.md
+    mkdir -p src/snap_backend_template/ && touch src/snap_backend_template/__init__.py && touch README.md
 RUN --mount=type=cache,uid=$UID,gid=$GID,target=/home/user/.cache/pypoetry/ \
     poetry install --only main --all-extras --no-interaction
 
