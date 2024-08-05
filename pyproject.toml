@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
 name = "snap-faststream-template"
 version = "0.0.0"
-description = "Snap template for FastStream workers server."
+description = "SnapEnv template for backend server."
 authors = ["Abner G Jacobsen <abner@apoana.com.br>"]
 readme = "README.md"
 repository = "https://github.com/snapenv/snap-faststream-template"
@@ -106,7 +106,7 @@ convention = "numpy"
         --host $host \
         --port $port \
         --reload \
-        snap_app.api:app
+        snap_backend_template.api:app
     } else {
       gunicorn \
         --access-logfile - \
@@ -118,7 +118,7 @@ convention = "numpy"
         --worker-class uvicorn.workers.UvicornWorker \
         --worker-tmp-dir /dev/shm \
         --workers 2 \
-        snap_app.api:app
+        snap_backend_template.api:app
     } fi
     """
 
