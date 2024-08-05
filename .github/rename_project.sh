@@ -34,7 +34,7 @@ git ls-files | while read -r filename; do
     fi
 done
 
-mv "$original_name" "$name"
+mv "src/$original_name" "src/$name"
 
 # This command runs only once on GHA!
 rm -rf .github/template.yml
