@@ -37,7 +37,7 @@ class SnapEnvCommonSettings(BaseSettings):
     SnapEnv common configuration parameters shared between all environments.
 
     This class reads configuration parameters defined within the class,
-    from environment variables, and from the .env file. The source priority 
+    from environment variables, and from the .env file. The source priority
     is as follows (from highest to lowest):
 
     - env_settings
