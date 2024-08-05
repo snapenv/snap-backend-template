@@ -1,5 +1,7 @@
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-backend-template) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://codespaces.new/snapenv/snap-backend-template)
 
+[![Use This Template](https://img.shields.io/static/v1?label=GitHub%20Repostory&message=Create%20Using%20This%20Template&color=blue&logo=github)](https://github.com/snapenv/snap-backend-template/generate)
+
 # SnapEnv Backend Template
 
 SnapEnv template for FastAPI server, FastStream workers server, etc.
