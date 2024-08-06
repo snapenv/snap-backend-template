@@ -35,6 +35,7 @@ git ls-files | while read -r filename; do
 done
 
 mv "src/$original_name" "src/$name"
+mv "docs/MODULES-Reference/$original_name" "docs/MODULES-Reference/$name"
 
 # This command runs only once on GHA!
 rm -rf .github/template.yml

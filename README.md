@@ -2,9 +2,9 @@
 
 [![Use This Template](https://img.shields.io/static/v1?label=GitHub%20Repostory&message=Create%20Using%20This%20Template&color=blue&logo=github)](https://github.com/snapenv/snap-backend-template/generate)
 
-# SnapEnv Backend Template
+# snap-backend-template
 
-SnapEnv template for FastAPI server, FastStream workers server, etc.
+SnapEnv template for backend server.
 
 ## Using
 
