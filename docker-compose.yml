@@ -13,8 +13,6 @@ services:
     volumes:
       - ..:/workspaces
       - command-history-volume:/home/user/.history/
-    profiles:
-      - dev
 
   dev:
     extends: devcontainer
