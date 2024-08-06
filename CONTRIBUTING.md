@@ -1,24 +1,90 @@
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-backend-template) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://codespaces.new/snapenv/snap-backend-template)
 
-# snap-backend-template
+# Contributing to snap-backend-template
 
-SnapEnv template for backend server.
+This is an open-source project and we welcome contributions.
 
-## Using
+## 👩‍💻 How to contribute
+
+Please follow the [fork and pull request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) workflow:
+
+- Fork the repository.
+- Create a new branch for your feature.
+- Add your feature or improvement.
+- Send a pull request.
+- We appreciate your support & input!
+
+-----------------------
+Contribution guidelines
+-----------------------
+
+Please:
+
+1. Keep your commits modular
+2. Add descriptive commit messages
+3. Use conventional commits
+4. Attach a PR to an issue if applicable
+5. Ensure all new features have tests
+6. Add documentation for new features
+
+## Project setup
+
+1. Clone the repository.
+2. Create a virtual environment:
+```sh
+poetry install
+```
+   - This setup will:
+     - Create a `.venv` virtual environment in the current directory.
+     - Install the required packages.
+     - Install the `snap-backend-template` package in editable mode.
+3. Activate the virtual environment:
+```sh
+poetry shell
+```
+4. Test that the Python development environment is working:
+```sh
+ENVIRONMENT=dev poe test
+```
+- This setup will:
+    - Use `dev.env` file as source of settings for the API server.
+    - Starts a FastAPI server at `http://0.0.0.0:8000`.
+    - Install the `snap-backend-template` package in editable mode.
+- And open [localhost:8000/docs](http://localhost:8000/docs) in your browser.
+
+## Developing using Docker
 
 To serve this app, run:
 
 ```sh
-docker compose up app
+docker compose --profile app up -d
 ```
 
-and open [localhost:8000](http://localhost:8000) in your browser.
+and open [localhost:8000/docs](http://localhost:8000/docs) in your browser.
 
 Within the Dev Container this is equivalent to:
 
 ```sh
-poe api
+ENVIRONMENT=dev poe api --dev
 ```
+
+To stop, run:
+
+```sh
+docker compose --profile app down
+```
+
+| :boom: About env configuration |
+|:-------------------------------|
+| You can choose wich env file to use when running the app using the **ENVIRONMENT** env variable. If you set **ENVIRONMENT=dev** the app will read the `dev.env` file. If **ENVIRONMENT** is not set, the app will use the `.env` file. Off course, you can set all needed variables manually in the envionroment of your shell. |
+
+## Formatting and validation
+
+Ensure your code meets our quality standards by running the appropriate formatting and validation script before submitting a pull request:
+   - `poe lint`
+   - `ENVIRONMENT=dev poe test`
+These scripts will perform code formatting with `ruff`, static type checks with `mypy`, and run unit tests with `pytest`.
+
 
 ## Contributing
 
@@ -46,7 +112,7 @@ poe api
 <details>
 <summary>2. Install Docker</summary>
 
-1. [Install Docker Desktop](https://www.docker.com/get-started).
+1. [Install Docker](https://www.docker.com/get-started).
     - _Linux only_:
         - Export your user's user id and group id so that [files created in the Dev Container are owned by your user](https://github.com/moby/moby/issues/3206):
             ```sh
@@ -90,8 +156,8 @@ The following development environments are supported:
 - Run `poetry add {package}` from within the development environment to install a run time dependency and add it to `pyproject.toml` and `poetry.lock`. Add `--group test` or `--group dev` to install a CI or development dependency, respectively.
 - Run `poetry update` from within the development environment to upgrade all dependencies to the latest versions allowed by `pyproject.toml`.
 - Run `poe docs`, `poe lint` and `ENVIRONMENT=dev poe test` before any commit, or your git push can fail. `poe docs` generate any new documentation for changes/additions in the python modules.
-- Run `cz --name cz_gitmoji commit` to commit files using conventional commits with emojis.
-- Run `cz --name cz_gitmoji bump --changelog` to bump the package's version, update the `CHANGELOG.md`, and create a git tag.
+- Run `cz --name cz_gitmoji commit` so commit files using conventional commits with emojis.
+- Run `cz bump` to bump the app's version, update the `CHANGELOG.md`, and create a git tag.
 - Run `git push --tags` to push the new tag to github.
 
 </details>
