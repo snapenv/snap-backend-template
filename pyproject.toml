@@ -35,7 +35,6 @@ pytest-xdist = ">=3.5.0"
 ruff = ">=0.3.5"
 
 [tool.poetry.group.dev.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
-cruft = ">=2.15.0"
 ipykernel = ">=6.29.4"
 ipywidgets = ">=8.1.2"
 mkdocs = "^1.6.0"
