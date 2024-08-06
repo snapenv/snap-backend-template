@@ -36,6 +36,7 @@ done
 
 mv "src/$original_name" "src/$name"
 mv "docs/MODULES-Reference/$original_name" "docs/MODULES-Reference/$name"
+cp "docs/index.md" "./README.md"
 
 # This command runs only once on GHA!
 rm -rf .github/template.yml
